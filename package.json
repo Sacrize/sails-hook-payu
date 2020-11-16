@@ -1,0 +1,27 @@
+{
+  "name": "sails-hook-payu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Sacrize/sails-hook-payu.git"
+  },
+  "sails": {
+    "isHook": true
+  },
+  "keywords": [
+    "sails",
+    "hook",
+    "payu"
+  ],
+  "author": "Jakub Paprocki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sacrize/sails-hook-payu/issues"
+  },
+  "homepage": "https://github.com/Sacrize/sails-hook-payu#readme"
+}

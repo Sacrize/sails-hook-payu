@@ -23,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/Sacrize/sails-hook-payu/issues"
   },
-  "homepage": "https://github.com/Sacrize/sails-hook-payu#readme"
+  "homepage": "https://github.com/Sacrize/sails-hook-payu#readme",
+  "dependencies": {
+    "nodejs-payu-sdk": "^1.0.0",
+    "sails-hook-custom-events": "^1.0.1"
+  }
 }

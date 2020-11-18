@@ -45,7 +45,7 @@ module.exports = function (sails) {
                 '/cb/payu': function (req, res, next) {
                     let headers = req.headers;
                     let whitelist = config.payuWhitelist;
-                    if (whitelist.includes(req.ip)) {
+                    if (!whitelist.includes(req.ip)) {
                         return;
                     }
                     if (_verifyNotification(req.body, headers)) {

@@ -29,7 +29,8 @@ module.exports = function (sails) {
                     '185.68.12.26',
                     '185.68.12.27',
                     '185.68.12.28',
-                ]
+                ],
+                enableNotificationsEndpoint: true,
             }
         },
         initialize: function () {
@@ -43,10 +44,13 @@ module.exports = function (sails) {
         routes: {
             before: {
                 '/cb/payu': function (req, res, next) {
+                    if (!config.enableNotificationsEndpoint) {
+                        return next();
+                    }
                     let headers = req.headers;
                     let whitelist = config.payuWhitelist;
                     if (!whitelist.includes(req.ip)) {
-                        return;
+                        return next();
                     }
                     if (_verifyNotification(req.body, headers)) {
                         sails.hooks.events.emit('payu-notification', { notification: req.body, });
@@ -71,8 +75,8 @@ module.exports = function (sails) {
         payu = new Payu(config.clientId, config.clientSecret, config.posId, config.key, config.environment);
     }
 
-    function _getShopData() {
-        return payu.getShopData(config.shopId);
+    function _getShopData(shopId) {
+        return payu.getShopData(shopId || config.shopId);
     }
 
     function _getOrder(orderId) {

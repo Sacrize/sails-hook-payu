@@ -5,6 +5,10 @@ module.exports = function (sails) {
     let payu;
     let config;
 
+    sails.on('ready', function () {
+        _checkDependencies();
+    });
+
     return {
         defaults: {
             __configKey__: {
@@ -103,4 +107,15 @@ module.exports = function (sails) {
         return payu.verifyNotification(json, headers);
     }
 
+    function _checkDependencies() {
+        let modules = [];
+        if (config.enableNotificationsEndpoint) {
+            if (!sails.hooks.events) {
+                modules.push('sails-hook-custom-events');
+            }
+        }
+        if (modules.length) {
+            throw new Error('To use hook `sails-hook-payu`, you need to install the following modules: ' + modules.join(', '));
+        }
+    }
 }

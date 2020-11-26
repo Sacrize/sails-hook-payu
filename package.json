@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/Sacrize/sails-hook-payu#readme",
   "dependencies": {
-    "nodejs-payu-sdk": "^1.0.2",
-    "sails-hook-custom-events": "^1.0.1"
+    "nodejs-payu-sdk": "^1.0.2"
   }
 }
